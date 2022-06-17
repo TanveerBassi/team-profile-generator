@@ -1,41 +1,29 @@
-// using Employee constructor
-const Employee = require("../lib/Employee");
+const Employee = require("../src/lib/Employee");
 
-// creates employee object
-test("creates an employee object", () => {
-  const employee = new Employee("Tanveer", 90, "tanveer13a551@gmail.com");
+describe("Employee", () => {
+  const mockName = "J Doe";
+  const mockId = "88888888";
+  const mockEmail = "email@email.com";
 
-  expect(employee.name).toEqual(expect.any(String));
-  expect(employee.id).toEqual(expect.any(Number));
-  expect(employee.email).toEqual(expect.any(String));
-});
+  const employee = new Employee(mockName, mockId, mockEmail);
 
-// gets id from getId()
-test("gets employee name", () => {
-  const employee = new Employee("Tanveer", 90, "tanveer13a551@gmail.com");
+  it("should be an instance of Employee", () => {
+    expect(employee).toBeInstanceOf(Employee);
+  });
 
-  expect(employee.getName()).toEqual(expect.any(String));
-});
+  it("should return the expected name", () => {
+    expect(employee.getName()).toEqual(mockName);
+  });
 
-// gets id from getId()
-test("gets employee ID", () => {
-  const employee = new Employee("Tanveer", 90, "tanveer13a551@gmail.com");
+  it("should return the expected id", () => {
+    expect(employee.getId()).toEqual(mockId);
+  });
 
-  expect(employee.getId()).toEqual(expect.any(Number));
-});
+  it("should return the expected email", () => {
+    expect(employee.getEmail()).toEqual(mockEmail);
+  });
 
-// gets emails from getEmail()
-test("gets employee email", () => {
-  const employee = new Employee("Tanveer", 90, "tanveer13a551@gmail.com");
-
-  expect(employee.getEmail()).toEqual(
-    expect.stringContaining(employee.email.toString())
-  );
-});
-
-// gets role from getRole()
-test("gets role of employee", () => {
-  const employee = new Employee("Tanveer", 90, "tanveer13a551@gmail.com");
-
-  expect(employee.getRole()).toEqual("Employee");
+  it("should return the role of Employee", () => {
+    expect(employee.getRole()).toEqual("Employee");
+  });
 });

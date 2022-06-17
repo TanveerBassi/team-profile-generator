@@ -1,16 +1,34 @@
-// using Manager constructor
-const Manager = require("../lib/Manager");
+const Manager = require("../src/lib/Manager");
 
-// creating manager object
-test("creates an Manager object", () => {
-  const manager = new Manager("Tanveer", 90, "tanveer13a551@gmail.com", 4);
+describe("Manager", () => {
+  const mockName = "J Doe";
+  const mockId = "88888888";
+  const mockEmail = "email@email.com";
+  const mockOfficeNumber = "8";
 
-  expect(manager.officeNumber).toEqual(expect.any(Number));
-});
+  const manager = new Manager(mockName, mockId, mockEmail, mockOfficeNumber);
 
-// gets role from getRole()
-test("gets role of employee", () => {
-  const manager = new Manager("Tanveer", 90, "tanveer13a551@gmail.com");
+  it("should be an instance of Manager", () => {
+    expect(manager).toBeInstanceOf(Manager);
+  });
 
-  expect(manager.getRole()).toEqual("Manager");
+  it("should return the expected name", () => {
+    expect(manager.getName()).toEqual(mockName);
+  });
+
+  it("should return the expected id", () => {
+    expect(manager.getId()).toEqual(mockId);
+  });
+
+  it("should return the expected email", () => {
+    expect(manager.getEmail()).toEqual(mockEmail);
+  });
+
+  it("should return the expected office number", () => {
+    expect(manager.getOfficeNumber()).toEqual(mockOfficeNumber);
+  });
+
+  it("should return the role of Manager", () => {
+    expect(manager.getRole()).toEqual("Manager");
+  });
 });

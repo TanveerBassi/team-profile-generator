@@ -1,25 +1,34 @@
-// using Intern constructor
-const Intern = require("../lib/Intern");
+const Intern = require("../src/lib/Intern");
 
-// creating intern object
-test("creates an Intern object", () => {
-  const intern = new Intern("Tanveer", 90, "Tanveer13a551@gmail.com", "SFSU");
+describe("Intern", () => {
+  const mockName = "J Doe";
+  const mockId = "88888888";
+  const mockEmail = "email@email.com";
+  const mockSchool = "UoB";
 
-  expect(intern.school).toEqual(expect.any(String));
-});
+  const intern = new Intern(mockName, mockId, mockEmail, mockSchool);
 
-// gets school from getSchool()
-test("gets employee school", () => {
-  const intern = new Intern("Tanveer", 90, "Tanveer13a551@gmail.com", "SFSU");
+  it("should be an instance of Intern",  () => {
+    expect(intern).toBeInstanceOf(Intern);
+  });
 
-  expect(intern.getSchool()).toEqual(
-    expect.stringContaining(intern.school.toString())
-  );
-});
+  it("should return the expected name",  () => {
+    expect(intern.getName()).toEqual(mockName);
+  });
 
-// gets role from getRole()
-test("gets role of employee", () => {
-  const intern = new Intern("Tanveer", 90, "Tanveer13a551@gmail.com", "SFSU");
+  it("should return the expected id",  () => {
+    expect(intern.getId()).toEqual(mockId);
+  });
 
-  expect(intern.getRole()).toEqual("Intern");
+  it("should return the expected email",  () => {
+    expect(intern.getEmail()).toEqual(mockEmail);
+  });
+
+  it("should return the expected school",  () => {
+    expect(intern.getSchool()).toEqual(mockSchool);
+  });
+
+  it("should return the role of Intern",  () => {
+    expect(intern.getRole()).toEqual("Intern");
+  });
 });

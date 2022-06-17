@@ -1,40 +1,34 @@
-// using Engineer constructor
-const Engineer = require("../lib/Engineer");
+const Engineer = require("../src/lib/Engineer");
 
-// creating engineer object
-test("creates an Engineer object", () => {
-  const engineer = new Engineer(
-    "Tanveer",
-    90,
-    "tanveer13a551@gmail.com",
-    "TanveerBassi"
-  );
+describe("Engineer", () => {
+  const mockName = "J Doe";
+  const mockId = "88888888";
+  const mockEmail = "email@email.com";
+  const mockGitHub = "GitUser";
 
-  expect(engineer.github).toEqual(expect.any(String));
-});
+  const engineer = new Engineer(mockName, mockId, mockEmail, mockGitHub);
 
-// gets github from getGithub()
-test("gets engineer github value", () => {
-  const engineer = new Engineer(
-    "Tanveer",
-    90,
-    "tanveer13a551@gmail.com",
-    "TanveerBassi"
-  );
+  it("should be an instance of Engineer", () => {
+    expect(engineer).toBeInstanceOf(Engineer);
+  });
 
-  expect(engineer.getGithub()).toEqual(
-    expect.stringContaining(engineer.github.toString())
-  );
-});
+  it("should return the expected name", () => {
+    expect(engineer.getName()).toEqual(mockName);
+  });
 
-// gets role from getRole()
-test("gets role of employee", () => {
-  const engineer = new Engineer(
-    "Tanveer",
-    90,
-    "tanveer13a551@gmail.com",
-    "TanveerBassi"
-  );
+  it("should return the expected id", () => {
+    expect(engineer.getId()).toEqual(mockId);
+  });
 
-  expect(engineer.getRole()).toEqual("Engineer");
+  it("should return the expected email", () => {
+    expect(engineer.getEmail()).toEqual(mockEmail);
+  });
+
+  it("should return the expected GitHub username", () => {
+    expect(engineer.getGitHub()).toEqual(mockGitHub);
+  });
+
+  it("should return the role of Engineer", () => {
+    expect(engineer.getRole()).toEqual("Engineer");
+  });
 });
